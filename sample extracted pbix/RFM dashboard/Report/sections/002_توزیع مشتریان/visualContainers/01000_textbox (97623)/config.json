@@ -1,0 +1,57 @@
+{
+  "name": "97623eb97e50a1870403",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 229.375,
+        "y": 0,
+        "z": 1000,
+        "width": 512,
+        "height": 32,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "روند تعداد مشتریان در دسته انتخابی چگونه بوده است؟",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "right"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "5fac1fb240a759b885d1"
+}

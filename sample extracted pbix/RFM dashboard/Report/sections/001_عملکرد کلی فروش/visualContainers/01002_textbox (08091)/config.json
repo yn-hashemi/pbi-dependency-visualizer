@@ -1,0 +1,57 @@
+{
+  "name": "0809133b1e70b596d133",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 240,
+        "y": 0,
+        "z": 1000,
+        "width": 512,
+        "height": 32,
+        "tabOrder": 1002
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "روند فروش در طول زمان چگونه بوده است؟",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "right"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "e723ebc87e6e32e07c33"
+}

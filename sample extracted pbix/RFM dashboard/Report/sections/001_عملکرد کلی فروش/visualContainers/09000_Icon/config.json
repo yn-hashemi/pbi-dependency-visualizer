@@ -1,0 +1,54 @@
+{
+  "name": "8a841a11a4b17b658dec",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 16.25,
+        "y": 0,
+        "z": 1500,
+        "width": 61.25,
+        "height": 61.25,
+        "tabOrder": 9000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "image",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "Screenshot_2026-01-22_1734456297509236488066.png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Icon'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "afbcec35a9a56e5760a5",
+  "howCreated": "InsertVisualButton"
+}

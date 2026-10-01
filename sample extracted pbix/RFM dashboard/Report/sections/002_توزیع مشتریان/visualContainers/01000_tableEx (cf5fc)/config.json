@@ -1,0 +1,365 @@
+{
+  "name": "cf5fc6c63009ee63ca22",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 47.5,
+        "y": 92.5,
+        "z": 2000,
+        "width": 758.75,
+        "height": 281.25,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "DimCustomer.CustomerName"
+        },
+        {
+          "queryRef": "Measure Table.Customer Last Order Date"
+        },
+        {
+          "queryRef": "Measure Table.Customer Frequency (Order Count)"
+        },
+        {
+          "queryRef": "Measure Table.Total Sales Amount"
+        },
+        {
+          "queryRef": "Measure Table.RFM Score"
+        },
+        {
+          "queryRef": "Customer Segments.SegmentEnglishName"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "d",
+          "Entity": "DimCustomer",
+          "Type": 0
+        },
+        {
+          "Name": "m",
+          "Entity": "Measure Table",
+          "Type": 0
+        },
+        {
+          "Name": "c",
+          "Entity": "Customer Segments",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "d"
+              }
+            },
+            "Property": "CustomerName"
+          },
+          "Name": "DimCustomer.CustomerName",
+          "NativeReferenceName": "نام مشتری"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Customer Monetory (Total Sales Amount)"
+          },
+          "Name": "Measure Table.Total Sales Amount",
+          "NativeReferenceName": "مجموع خرید (M)"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Customer Last Order Date"
+          },
+          "Name": "Measure Table.Customer Last Order Date",
+          "NativeReferenceName": "آخرین خرید (R)"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "RFM Score"
+          },
+          "Name": "Measure Table.RFM Score",
+          "NativeReferenceName": "RFM امتیاز"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "m"
+              }
+            },
+            "Property": "Customer Frequency (Order Count)"
+          },
+          "Name": "Measure Table.Customer Frequency (Order Count)",
+          "NativeReferenceName": "تعداد سفارش (F)"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "c"
+              }
+            },
+            "Property": "SegmentEnglishName"
+          },
+          "Name": "Customer Segments.SegmentEnglishName",
+          "NativeReferenceName": "دسته مشتری"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 1,
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "c"
+                }
+              },
+              "Property": "SegmentEnglishName"
+            }
+          }
+        }
+      ]
+    },
+    "columnProperties": {
+      "Measure Table.Total Sales Amount": {
+        "displayName": "مجموع خرید (M)"
+      },
+      "Measure Table.Customer Frequency (Order Count)": {
+        "displayName": "تعداد سفارش (F)"
+      },
+      "DimCustomer.CustomerName": {
+        "displayName": "نام مشتری"
+      },
+      "Measure Table.Customer Last Order Date": {
+        "displayName": "آخرین خرید (R)"
+      },
+      "Measure Table.RFM Score": {
+        "displayName": "RFM امتیاز"
+      },
+      "Customer Segments.SegmentEnglishName": {
+        "displayName": "دسته مشتری"
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "columnFormatting": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimCustomer.CustomerName"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure Table.Customer Last Order Date"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure Table.Customer Frequency (Order Count)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure Table.RFM Score"
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Measure Table.Customer Last Order Date"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Measure Table.Customer Frequency (Order Count)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "103.75D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Customer Segments.SegmentEnglishName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "185D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimCustomer.CustomerName"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Measure Table.Total Sales Amount"
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Minimal'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BottomLeft'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

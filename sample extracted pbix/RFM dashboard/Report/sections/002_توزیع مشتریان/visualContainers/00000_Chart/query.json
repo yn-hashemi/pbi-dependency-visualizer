@@ -1,0 +1,121 @@
+{
+  "Commands": [
+    {
+      "SemanticQueryDataShapeCommand": {
+        "Query": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "Measure Table",
+              "Type": 0
+            },
+            {
+              "Name": "c",
+              "Entity": "Customer Segments",
+              "Type": 0
+            }
+          ],
+          "Select": [
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Customer Sales Amount in Segment"
+              },
+              "Name": "Measure Table.Customer Sales Amount in Segment",
+              "NativeReferenceName": "مجموع خرید"
+            },
+            {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "m"
+                  }
+                },
+                "Property": "Customer Count in Segment"
+              },
+              "Name": "Measure Table.Customer Count in Segment",
+              "NativeReferenceName": "تعداد مشتری"
+            },
+            {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "c"
+                  }
+                },
+                "Property": "SegmentEnglishName"
+              },
+              "Name": "Customer Segments.SegmentEnglishName",
+              "NativeReferenceName": "دسته1"
+            },
+            {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Source": "c"
+                      }
+                    },
+                    "Property": "SegmentPersianName"
+                  }
+                },
+                "Function": 3
+              },
+              "Name": "Min(Customer Segments.SegmentPersianName)",
+              "NativeReferenceName": "نام فارسی دسته"
+            }
+          ],
+          "OrderBy": [
+            {
+              "Direction": 2,
+              "Expression": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "Customer Sales Amount in Segment"
+                }
+              }
+            }
+          ]
+        },
+        "Binding": {
+          "Primary": {
+            "Groupings": [
+              {
+                "Projections": [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ]
+          },
+          "DataReduction": {
+            "DataVolume": 4,
+            "Primary": {
+              "Window": {
+                "Count": 1000
+              }
+            }
+          },
+          "SuppressedJoinPredicates": [
+            1,
+            3
+          ],
+          "Version": 1
+        },
+        "ExecutionMetricsKind": 1
+      }
+    }
+  ]
+}

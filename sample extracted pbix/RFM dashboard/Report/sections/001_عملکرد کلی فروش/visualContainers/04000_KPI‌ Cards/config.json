@@ -1,0 +1,20 @@
+{
+  "name": "dda7b6dc3c41c11e4d5a",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "height": 112,
+        "width": 400.00000000000045,
+        "x": 827.640422006672,
+        "y": 111.46068787306899,
+        "z": 7000,
+        "tabOrder": 4000
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "KPI‌ Cards",
+    "groupMode": 0
+  }
+}

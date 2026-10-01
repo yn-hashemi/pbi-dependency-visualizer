@@ -1,0 +1,57 @@
+{
+  "name": "067ca1290a4c123a64cb",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 222.8125,
+        "y": 9.0625,
+        "z": 1000,
+        "width": 56.25,
+        "height": 38.75,
+        "tabOrder": 5006
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": ":سال",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "95b3b9a308e3d5c60d97"
+}

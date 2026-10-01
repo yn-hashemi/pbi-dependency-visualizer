@@ -1,0 +1,88 @@
+{
+  "objects": {
+    "columnFormatting": [
+      {
+        "properties": {
+          "alignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Right'"
+              }
+            }
+          },
+          "styleHeader": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Measure Table.Segment Offer Action"
+        }
+      }
+    ],
+    "columnHeaders": [
+      {
+        "properties": {
+          "bold": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      0
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "اقدامات پیشنهادی",
+        "Name": "Measure Table.Segment Offer Action",
+        "Type": 2048
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "اقدامات پیشنهادی",
+      "queryName": "Measure Table.Segment Offer Action",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure Table"
+            }
+          },
+          "Property": "Segment Offer Action"
+        }
+      }
+    }
+  ]
+}

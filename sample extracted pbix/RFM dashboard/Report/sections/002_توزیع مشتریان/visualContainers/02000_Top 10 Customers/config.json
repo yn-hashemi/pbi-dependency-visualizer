@@ -1,0 +1,20 @@
+{
+  "name": "94406fc39144bd10a65d",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 828.3984375,
+        "y": 92.5,
+        "z": 3000,
+        "width": 413.75,
+        "height": 417.5,
+        "tabOrder": 2000
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "Top 10 Customers",
+    "groupMode": 0
+  }
+}

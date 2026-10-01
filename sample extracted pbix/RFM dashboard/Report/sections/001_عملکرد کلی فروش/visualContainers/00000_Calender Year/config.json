@@ -1,0 +1,21 @@
+{
+  "name": "95b3b9a308e3d5c60d97",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "height": 47.8125,
+        "width": 279.0625,
+        "x": 0,
+        "y": 0,
+        "z": 7000,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "Calender Year",
+    "groupMode": 0
+  },
+  "parentGroupName": "7c1e98688b608d5d8a75"
+}

@@ -1,0 +1,12 @@
+﻿relationship AutoDetected_b3dd8f06-0a1f-451d-902c-86fe96e93ac3
+	fromColumn: FactSales.ProductKey
+	toColumn: DimProduct.ProductKey
+
+relationship AutoDetected_c9276c2a-5f6f-4efe-bad0-2d8df22932dc
+	fromColumn: FactSales.CustomerKey
+	toColumn: DimCustomer.CustomerKey
+
+relationship a30d0f6f-b8cb-b809-7506-48904de9ca5d
+	fromColumn: FactSales.OrderDateKey
+	toColumn: DimDate.DateKey
+

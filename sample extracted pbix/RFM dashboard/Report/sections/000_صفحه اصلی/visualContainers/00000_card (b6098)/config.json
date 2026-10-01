@@ -1,0 +1,23 @@
+{
+  "name": "b60981c498ac06480a5d",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 672,
+        "y": 640,
+        "z": 0,
+        "width": 288,
+        "height": 64,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "card",
+    "display": {
+      "mode": "hidden"
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

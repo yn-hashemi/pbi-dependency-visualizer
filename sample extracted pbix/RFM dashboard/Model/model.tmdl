@@ -1,0 +1,23 @@
+﻿model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.143.4379.0 (25.05)+a141f42c390a252ef694b8cffbd48552c577c79d
+
+annotation PBI_QueryOrder = ["DimProduct","DimDate","DimCustomer","FactSales","Measure Table","DW_Server","DW_DatabaseName"]
+
+ref table DimProduct
+ref table DimDate
+ref table DimCustomer
+ref table FactSales
+ref table 'Measure Table'
+ref table 'Customer Segments'
+
+ref cultureInfo en-US
+

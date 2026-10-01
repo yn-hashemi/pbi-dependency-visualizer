@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#20231f">
+  <title>Power BI Dependency Explorer</title>
+  <link rel="stylesheet" href="css/explorer.css">
+  <script defer src="js/model-parser.js"></script>
+  <script defer src="js/indexer.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">P</div>
+        <div><h1>Power BI Dependency Explorer</h1><p>pbi-tools · PBIX / SSAS Tabular</p></div>
+      </div>
+      <label class="top-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="search-input" type="search" placeholder="جست‌وجوی جدول، ستون، مژر، گزارش، صفحه یا visual…" autocomplete="off">
+      </label>
+      <label class="top-control" title="فیلتر نتایج بر اساس PBIX">
+        <span>گزارش</span><select id="report-filter" aria-label="فیلتر بر اساس گزارش"><option value="all">همه‌ی گزارش‌ها</option></select>
+      </label>
+      <label class="folder-label" for="folder-input">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h5l2 2h8A1.5 1.5 0 0 1 21 9.5v8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/><path d="M3.5 10h17"/></svg>
+        انتخاب پوشه‌ها
+      </label>
+      <input id="folder-input" type="file" webkitdirectory directory multiple accept=".json,.bim,.tmdl,.dax,.txt">
+      <button class="plain-button" id="clear-button" type="button" title="پاک‌کردن جست‌وجو و فیلترها">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7v5h5"/><path d="M5.5 16a8 8 0 1 0-.7-7"/></svg>پاک‌کردن
+      </button>
+      <div id="folder-state">در انتظار پوشه‌ی استخراج‌شده</div>
+    </header>
+
+    <main class="workspace">
+      <div class="stats" aria-label="خلاصه‌ی داده‌های خوانده‌شده">
+        <div class="stat"><strong id="stat-reports">۰</strong><span>گزارش</span></div>
+        <div class="stat"><strong id="stat-pages">۰</strong><span>صفحه</span></div>
+        <div class="stat"><strong id="stat-objects">۰</strong><span>جدول / ستون / مژر</span></div>
+        <div class="stat"><strong id="stat-locations">۰</strong><span>ارجاع مستقیم</span></div>
+      </div>
+
+      <div class="explorer-grid">
+        <aside class="panel catalog-panel" aria-label="فهرست مدل">
+          <div class="panel-head">
+            <div class="panel-title"><h2>فهرست فیلدها</h2><span class="panel-count" id="field-count">۰ مورد</span></div>
+          </div>
+          <nav class="kind-tabs" id="kind-tabs" aria-label="نوع شیء مدل"></nav>
+          <div class="field-list" id="field-list" aria-live="polite"></div>
+        </aside>
+
+        <section class="panel detail-panel" aria-label="مسیرها و محل‌های استفاده">
+          <div class="detail-header">
+            <div class="selected-title"><h2 id="selected-name">موردی انتخاب نشده</h2><p id="selected-subtitle">جدول، ستون یا مژر را از فهرست انتخاب کنید</p></div>
+            <div class="selection-summary" id="selection-summary"></div>
+          </div>
+          <div class="detail-toolbar">
+            <div class="panel-title"><h3>محل استفاده و مسیر وابستگی</h3><span class="panel-count" id="usage-count">۰ محل</span></div>
+            <div class="view-switch" role="group" aria-label="شیوه‌ی نمایش مسیرها">
+              <button class="view-button active" id="view-table" type="button" aria-pressed="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5h16v14H4zM4 10h16M10 5v14"/></svg>جدول جزئیات
+              </button>
+              <button class="view-button" id="view-graph" type="button" aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="m7 11 10-5M7 13l10 5"/></svg>گراف مسیر
+              </button>
+            </div>
+          </div>
+          <div class="usage-wrap" id="usage-table-wrap">
+            <table class="usage-table">
+              <thead><tr><th>گزارش / PBIX</th><th>صفحه</th><th>نام visual / گروه Selection</th><th>نوع visual</th><th>نقش / مسیر Measure</th><th>موقعیت تقریبی روی صفحه</th></tr></thead>
+              <tbody id="usage-body"><tr><td class="empty-cell" colspan="7">پوشه‌ی Extracted Dashboards را انتخاب کنید.</td></tr></tbody>
+            </table>
+          </div>
+          <div class="path-viewport" id="path-viewport" hidden></div>
+          <div class="coverage-note" id="coverage-note" hidden></div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer"><span></span><span>https://github.com/yn-hashemi/PBIX-Dependency-Visualizer</span></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "name": "44d8dc79aab1437c3571",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 64,
+        "y": 0,
+        "z": 1000,
+        "width": 320,
+        "height": 32,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "کدام مشتریان بیشترین درآمد را ایجاد کرده اند؟",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "right"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "60c6913dad0cd2d8d79d"
+}

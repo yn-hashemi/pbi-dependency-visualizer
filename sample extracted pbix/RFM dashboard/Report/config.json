@@ -1,0 +1,62 @@
+{
+  "version": "5.59",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10",
+      "version": "5.61",
+      "type": 2
+    },
+    "customTheme": {
+      "name": "CY23SU0213686641584036974.json",
+      "version": "5.61",
+      "type": 1
+    }
+  },
+  "activeSectionIndex": 2,
+  "defaultDrillFilterOtherVisuals": true,
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  },
+  "linguisticSchemaSyncVersion": 2,
+  "settings": {
+    "useNewFilterPaneExperience": true,
+    "allowChangeFilterTypes": true,
+    "useStylableVisualContainerHeader": true,
+    "queryLimitOption": 6,
+    "useEnhancedTooltips": true,
+    "exportDataMode": 1,
+    "useDefaultAggregateDisplayName": true
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

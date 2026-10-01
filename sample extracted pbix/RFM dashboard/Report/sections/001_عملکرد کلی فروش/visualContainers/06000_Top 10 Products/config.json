@@ -1,0 +1,20 @@
+{
+  "name": "2afe54e63d45da9486a6",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 48,
+        "y": 96,
+        "z": 5000,
+        "width": 352,
+        "height": 272,
+        "tabOrder": 6000
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "Top 10 Products",
+    "groupMode": 0
+  }
+}

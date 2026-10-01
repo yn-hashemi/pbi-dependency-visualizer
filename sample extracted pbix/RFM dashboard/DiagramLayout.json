@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 303.38305001469371,
+            "y": 0
+          },
+          "nodeIndex": "DimProduct",
+          "nodeLineageTag": "aa40168f-764d-4d80-becc-6cec2434416c",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 820.87084349974566,
+            "y": 2.3736266244260307
+          },
+          "nodeIndex": "DimDate",
+          "nodeLineageTag": "17937d06-878b-447f-931c-e1c628e905fa",
+          "size": {
+            "height": 167.78388420508082,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 559.38305001469371,
+            "y": 0
+          },
+          "nodeIndex": "DimCustomer",
+          "nodeLineageTag": "3f131993-ffdd-43ef-9c3d-606d2e249b89",
+          "size": {
+            "height": 173.25274675114792,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 279
+          },
+          "nodeIndex": "FactSales",
+          "nodeLineageTag": "5c2c79ec-034c-49f5-aed7-61435cc21a20",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1083.2500905547645,
+            "y": 1.4609300230584914
+          },
+          "nodeIndex": "Measure Table",
+          "nodeLineageTag": "9d81b66e-2137-4b9b-a77c-1787380718a4",
+          "size": {
+            "height": 455.96580806448389,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1334.5675512344908,
+            "y": 0
+          },
+          "nodeIndex": "Customer Segments",
+          "nodeLineageTag": "33d79924-5bf4-4b6f-b204-23639525876c",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70.95554390096882,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

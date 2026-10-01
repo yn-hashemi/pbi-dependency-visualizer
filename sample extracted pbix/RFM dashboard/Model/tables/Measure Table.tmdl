@@ -1,0 +1,274 @@
+﻿table 'Measure Table'
+
+	measure 'Customer Monetory (Total Sales Amount)' = ```
+			
+			    VAR _LastVisibleDate = MAX(DimDate[FullDateAlternateKey])
+			    RETURN
+			        CALCULATE(
+			            [Total Sales Amount],
+			            DimDate[FullDateAlternateKey] <= _LastVisibleDate
+			        )
+			```
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		displayFolder: RFM
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Total Distinct Customer Count' = ```
+			
+			    DISTINCTCOUNT(FactSales[CustomerKey])
+			```
+		formatString: #,0
+
+	measure 'Customer Last Order Date' = ```
+			
+			    VAR _LastVisibleDate = MAX(DimDate[FullDateAlternateKey])
+			    RETURN
+			        IF (
+			            HASONEVALUE(DimCustomer[CustomerName]),
+			            VAR _DateKey =
+			                CALCULATE(
+			                    MAX(FactSales[OrderDateKey]), /* آخرین تاریخ سفارش مشتری */
+			                    DimDate[FullDateAlternateKey] <= _LastVisibleDate
+			                )
+			            RETURN
+			                LOOKUPVALUE(DimDate[FullDateAlternateKey], DimDate[DateKey], _DateKey),
+			            BLANK()
+			        )
+			```
+		formatString: yyyy-mm-dd
+		displayFolder: RFM
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Customer Frequency (Order Count)' = ```
+			
+			    VAR _LastVisibleDate = MAX(DimDate[FullDateAlternateKey])
+			    RETURN
+			        CALCULATE(
+			            DISTINCTCOUNT(FactSales[SalesOrderNumber]),
+			            DimDate[FullDateAlternateKey] <= _LastVisibleDate
+			        )
+			```
+		formatString: #,0
+		displayFolder: RFM
+
+	measure 'Customer Recency (Days)' = ```
+			
+			    VAR _LastVisibleDate = MAX(DimDate[FullDateAlternateKey])
+			    VAR _CustomerLastOrderDate = [Customer Last Order Date]
+			    VAR _DiffDays = 
+			        DATEDIFF(_CustomerLastOrderDate, _LastVisibleDate, DAY)
+			    RETURN
+			        _DiffDays
+			```
+		formatString: #,0
+		displayFolder: RFM
+
+	measure 'Recency Score (R)' = ```
+			
+			    VAR _NumberOfDays = [Customer Recency (Days)] /* از آخرین خرید مشتری چند روز گذشته؟ */
+			    RETURN
+			        SWITCH(
+			            TRUE(),
+			            _NumberOfDays <= 100, 5,
+			            _NumberOfDays <= 200, 4,
+			            _NumberOfDays <= 300, 3,
+			            _NumberOfDays <= 500, 2,
+			            _NumberOfDays > 500, 1
+			        )
+			```
+		formatString: 0
+		displayFolder: RFM\Score
+
+	measure 'Frequency Score (F)' = ```
+			
+			    VAR _NumberOfOrders = [Customer Frequency (Order Count)] /* مجموعاً تعداد سفارش مشتری چند عدد بوده است؟ */
+			    RETURN
+			        SWITCH(
+			            TRUE(),
+			            _NumberOfOrders <= 2, 1,
+			            _NumberOfOrders <= 4, 2,
+			            _NumberOfOrders <= 6, 3,
+			            _NumberOfOrders <= 8, 4,
+			            _NumberOfOrders > 8, 5
+			        )
+			```
+		formatString: 0
+		displayFolder: RFM\Score
+
+	measure 'Monetory Score (M)' = ```
+			
+			    VAR _TotalOrderAmount = [Customer Monetory (Total Sales Amount)] /* مجموع پولی که مشتری پرداخت کرده */
+			    RETURN
+			        SWITCH(
+			            TRUE(),
+			            _TotalOrderAmount <= 500, 1,
+			            _TotalOrderAmount <= 2000, 2,
+			            _TotalOrderAmount <= 5000, 3,
+			            _TotalOrderAmount <= 8000, 4,
+			            _TotalOrderAmount > 8000, 5
+			        )
+			```
+		formatString: 0
+		displayFolder: RFM\Score
+
+	measure 'RFM Score' = ```
+			
+			    VAR _RecencyScore = [Recency Score (R)]
+			    VAR _FrequencyScore = [Frequency Score (F)]
+			    VAR _MonetoryScore = [Monetory Score (M)]
+			    RETURN
+			        IF (
+			            HASONEVALUE(DimCustomer[CustomerName]),
+			            _RecencyScore & _FrequencyScore & _MonetoryScore,
+			            BLANK()
+			        )
+			        
+			```
+		displayFolder: RFM\Score
+
+	measure 'Customer Segment by RFM Score' = ```
+			
+			    VAR _RFM = [RFM Score]
+			    VAR _CustomerSegment = 
+			        SWITCH(
+			            TRUE(),
+			            _RFM IN { "555", "554", "544", "545", "454", "455", "445" }, 1,
+			            _RFM IN { "543", "444", "435", "355", "354", "345", "344", "335" }, 2,
+			            _RFM IN { "553", "551", "552", "541", "542", "533", "532", "531", "452", "451", "442", "441", "431", "453", "433", "432",
+			            "423", "353", "352", "351", "342", "341", "333", "323" }, 3,
+			            _RFM IN { "512", "511", "422", "421", "412", "411", "311" }, 4,
+			            _RFM IN { "525", "524", "523", "522", "521", "515", "514", "513", "425", "424", "413", "414", "415", "315", "314", "313" },
+			            5,
+			            _RFM IN { "535", "534", "443", "434", "343", "334", "325", "324" }, 6,
+			            _RFM IN { "331", "321", "312", "221", "213", "231", "241", "251" }, 7,
+			            _RFM IN { "155", "154", "144", "214", "215", "115", "114", "113" }, 8,
+			            _RFM IN { "255", "254", "245", "244", "253", "252", "243", "242", "235", "234", "225", "224", "153", "152", "145", "143",
+			            "142", "135", "134", "133", "125", "124" }, 9,
+			            _RFM IN { "332", "322", "233", "232", "223", "222", "132", "123", "122", "212", "211" }, 10,
+			            _RFM IN { "111", "112", "121", "131", "141", "151" }, 11,
+			            12
+			        )
+			    RETURN      
+			        IF (
+			            HASONEVALUE(DimCustomer[CustomerName]),
+			            _CustomerSegment,
+			            BLANK()
+			        )
+			        
+			```
+		formatString: 0
+		displayFolder: RFM\Score
+
+	measure 'Customer Count in Segment' = ```
+			
+			    VAR _VisibleSegment = SELECTEDVALUE('Customer Segments'[SegmentKey])
+			    RETURN
+			        COUNTROWS(
+			            FILTER(
+			                DimCustomer,
+			                [Customer Segment by RFM Score] = _VisibleSegment
+			            )
+			        )
+			```
+		formatString: #,0
+
+	measure 'FILTER_Customer Segment in Visual Interaction' = ```
+			
+			    VAR _CurrentSegment = [Customer Segment by RFM Score]
+			    VAR _VisibleSements = VALUES('Customer Segments'[SegmentKey])
+			    RETURN
+			        IF (
+			            _CurrentSegment IN _VisibleSements,
+			            1,
+			            0
+			        )
+			```
+		formatString: 0
+
+	measure 'Customer Sales Amount in Segment' = ```
+			
+			    VAR _VisibleSegment = SELECTEDVALUE('Customer Segments'[SegmentKey])
+			    RETURN
+			        CALCULATE(
+			            [Customer Monetory (Total Sales Amount)],
+			            FILTER(
+			                VALUES(DimCustomer[CustomerName]),
+			                [Customer Segment by RFM Score] = _VisibleSegment
+			            )
+			        )
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Snapshot Date' = MAX(DimDate[FullDateAlternateKey])
+		formatString: yyyy-mm-dd
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Total Sales Amount' = ```
+			
+			    SUM(FactSales[SalesAmount])
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Segment Offer Action' = ```
+			
+			    VAR _VisibleSegment = SELECTEDVALUE('Customer Segments'[SegmentKey])
+			    RETURN
+			        SWITCH(
+			            _VisibleSegment,
+			            1, "پاداش دهيد: به آنها محصولات محبوب را هدیه دهید.
+			· اعتبار بسازید: از نظرات مثبت آنها در وبسایت و شبكههای اجتماعی استفاده کنید.
+			محصولات جدید را معرفی كنيد: آنها اولین کسانی هستند که باید از محصولات جدید مطلع شوند.",
+			            2, "· نظرسنجى كنيد: بازخورد آنها را براى بهبود خدمات جویا شوید.
+			· محصولات مکمل پیشنهاد دهید: آنها تمایل بیشتری به خرید محصولات گرانتر دارند.
+			ارزش افزوده ایجاد کنید: پیشنهاد ارسال رایگان يا جوايز كوچک.",
+			            3, "· برنامه وفاداری ایجاد کنید: آنها را به یک باشگاه مشتریان ویزه دعوت کنید.
+			مسابقه برگزار کنید: توجه آنها را با جوایز جذاب جلب کنید.
+			احساس ويره بودن به آنها بدهید: تبریک تولد يا سالگردها.",
+			            4, "فرآیند خوش آمدگویی: راهنماى محصول، ایميل خوش آمدگویی.
+			تخفيف برای خريد بعدى: آنها را برای خريد دوم تشویق كنید.
+			ارتباط سازنده: به سوالاتشان سريع پاسخ دهيد و از آنها بازخورد بگیرید.",
+			            5, "· ارائه نسخه آزمایشی رایگان: اجازه دهید ویژگیهای برتر محصول شما را تجربه كنند.
+			· افزایش آگاهی از برند: آنها را به رویدادها دعوت کنید.",
+			            6, "پيشنهاد سبد محصول: بر اساس خريدهای گذشته، بستههای تركيبى جذاب ارائه
+			دهید.
+			ایجاد حس نوستالژی: خریدهای قدیمیشان را به آنها یادآوری کنید و محصولات جدید و
+			پرطرفدار را پیشنهاد دهید.",
+			            7, "به اشتراکگذاری اطلاعات مفید: محتوای ارزشمند مرتبط با محصولاتتان برایشان ارسال کنید.
+			اراثه تحلیل رقبا: به آنها نشان دهيد چرا محصول شما بهتر است.",
+			            8, "اعتبار هدیه بدهید: مقداری اعتبار خرید به حسابشان اضافه کنید.
+			ليست علاقه مندىها ايجاد كنيد: بر اساس ليست آنها، تخفيفهای ویژه ارائه دهید.
+			پيشنهاد ارتقا: ارتقاى رايكان سرويس يا محصول.",
+			            9, "سرویسهای شخصیسازی شده: پيشنهادات را مطابق نياز آنها طراحى كنيد.
+			تماس تلفنى شخصی: دليل عدم خريدشان را جويا شويد.
+			ارتباط در شبکههای اجتماعی: آنها را در جریان اخبار جدید قرار دهید.",
+			            10, "تصمیمگیری آگاهانه: آیا بازگرداندن آنها ارزش تلاش را دارد؟
+			یک کمپین نهایی: ارسال ایمیل «دلمان برایتان تنک شده» با یک تخفيف ویزه.
+			نادیده گرفتن: تمركز منابع بر روی بخشهاى سودآورتر.",
+			            11, "تصمیمگیری آگاهانه: آیا بازگرداندن آنها ارزش تلاش را دارد؟
+			یک کمپین نهایی: ارسال ایمیل «دلمان برایتان تنک شده» با یک تخفيف ویزه.
+			نادیده گرفتن: تمركز منابع بر روی بخشهاى سودآورتر.",
+			            12, "سایر"
+			        )
+			```
+
+	partition 'Measure Table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

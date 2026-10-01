@@ -1,0 +1,45 @@
+{
+  "id": 0,
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Backgrounds8919422041954298.jpg",
+            "path": "Backgrounds8919422041954298.jpg",
+            "type": 100
+          },
+          {
+            "name": "CY23SU0213686641584036974.json",
+            "path": "CY23SU0213686641584036974.json",
+            "type": 201
+          },
+          {
+            "name": "Screenshot_2026-01-22_1734456297509236488066.png",
+            "path": "Screenshot_2026-01-22_1734456297509236488066.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "theme": "CY23SU0213686641584036974.json"
+}

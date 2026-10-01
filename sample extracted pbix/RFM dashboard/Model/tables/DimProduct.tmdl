@@ -1,0 +1,47 @@
+﻿table DimProduct
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategoryName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ProductCategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductSubcategoryName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ProductSubcategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimProduct = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(DW_Server, DW_DatabaseName, [Query="SELECT #(lf)#(tab)P.ProductKey,#(lf)#(tab)PC.EnglishProductCategoryName,#(lf)#(tab)PCC.EnglishProductSubcategoryName,#(lf)#(tab)P.EnglishProductName#(lf)FROM dbo.DimProductCategory AS PC#(lf)#(tab)INNER JOIN dbo.DimProductSubcategory AS PCC#(lf)#(tab)#(tab)ON PC.ProductCategoryKey = PCC.ProductCategoryKey#(lf)#(tab)INNER JOIN dbo.DimProduct AS P#(lf)#(tab)#(tab)ON P.ProductSubcategoryKey = PCC.ProductSubcategoryKey;"]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"EnglishProductCategoryName", "ProductCategoryName"}, {"EnglishProductSubcategoryName", "ProductSubcategoryName"}, {"EnglishProductName", "ProductName"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

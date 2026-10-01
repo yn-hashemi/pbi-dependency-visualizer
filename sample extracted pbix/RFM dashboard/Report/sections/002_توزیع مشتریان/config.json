@@ -1,0 +1,19 @@
+{
+  "relationships": [
+    {
+      "source": "bedf935843cca6c0e970",
+      "target": "283a7827a5b9500cc122",
+      "type": 1
+    },
+    {
+      "source": "283a7827a5b9500cc122",
+      "target": "ad8341033e241486b405",
+      "type": 1
+    },
+    {
+      "source": "cf5fc6c63009ee63ca22",
+      "target": "ad8341033e241486b405",
+      "type": 3
+    }
+  ]
+}

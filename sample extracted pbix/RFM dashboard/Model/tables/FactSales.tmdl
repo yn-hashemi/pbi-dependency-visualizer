@@ -1,0 +1,71 @@
+﻿table FactSales
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: OrderDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesAmount
+		dataType: decimal
+		isHidden
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		summarizeBy: sum
+		sourceColumn: SalesAmount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column SalesOrderNumber
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactSales = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(".\SQL2022", "AdventureWorksDW2022", [Query="SELECT #(lf)#(tab)SalesOrderNumber,#(lf)#(tab)ProductKey,#(lf)#(tab)OrderDateKey,#(lf)#(tab)CustomerKey,#(lf)#(tab)SalesAmount#(lf)FROM [dbo].[FactInternetSales]#(lf)WHERE OrderDateKey < 20140101 ;"]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"SalesAmount", Currency.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

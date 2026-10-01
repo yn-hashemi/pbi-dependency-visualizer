@@ -1,0 +1,51 @@
+[
+  {
+    "name": "64e3b1b5753942be0ae2",
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "Measure Table"
+          }
+        },
+        "Property": "FILTER_Customer Segment in Visual Interaction"
+      }
+    },
+    "filter": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "m",
+          "Entity": "Measure Table",
+          "Type": 0
+        }
+      ],
+      "Where": [
+        {
+          "Condition": {
+            "Comparison": {
+              "ComparisonKind": 0,
+              "Left": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "m"
+                    }
+                  },
+                  "Property": "FILTER_Customer Segment in Visual Interaction"
+                }
+              },
+              "Right": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "type": "Advanced",
+    "howCreated": 1
+  }
+]

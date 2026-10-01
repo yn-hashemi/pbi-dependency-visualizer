@@ -1,0 +1,32 @@
+﻿table DimCustomer
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCustomer = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(".\SQL2022", "AdventureWorksDW2022", [Query="SELECT #(lf)#(tab)[CustomerKey],#(lf)    FirstName + ISNULL(' ' + MiddleName, '') + ' ' + LastName + ' (' + CAST(CustomerKey AS VARCHAR(10)) + ')' AS CustomerName#(lf)FROM [dbo].[DimCustomer];#(lf)"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

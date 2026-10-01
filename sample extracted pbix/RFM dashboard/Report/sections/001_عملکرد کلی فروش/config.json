@@ -1,0 +1,81 @@
+{
+  "relationships": [
+    {
+      "source": "93c0774823e303ee4c00",
+      "target": "122ec217ead96e063192",
+      "type": 1
+    },
+    {
+      "source": "93c0774823e303ee4c00",
+      "target": "caa1988760b9b650043c",
+      "type": 1
+    },
+    {
+      "source": "caa1988760b9b650043c",
+      "target": "93c0774823e303ee4c00",
+      "type": 1
+    },
+    {
+      "source": "caa1988760b9b650043c",
+      "target": "122ec217ead96e063192",
+      "type": 1
+    },
+    {
+      "source": "122ec217ead96e063192",
+      "target": "93c0774823e303ee4c00",
+      "type": 1
+    },
+    {
+      "source": "122ec217ead96e063192",
+      "target": "caa1988760b9b650043c",
+      "type": 1
+    },
+    {
+      "source": "122ec217ead96e063192",
+      "target": "be777005682b30b059b8",
+      "type": 1
+    },
+    {
+      "source": "ea3e50408c9170266d00",
+      "target": "122ec217ead96e063192",
+      "type": 1
+    },
+    {
+      "source": "ea3e50408c9170266d00",
+      "target": "93c0774823e303ee4c00",
+      "type": 1
+    },
+    {
+      "source": "ea3e50408c9170266d00",
+      "target": "caa1988760b9b650043c",
+      "type": 1
+    }
+  ],
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": 0
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

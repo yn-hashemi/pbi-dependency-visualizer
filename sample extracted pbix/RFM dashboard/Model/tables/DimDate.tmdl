@@ -1,0 +1,94 @@
+﻿table DimDate
+	dataCategory: Time
+
+	column DateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullDateAlternateKey
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		summarizeBy: none
+		sourceColumn: FullDateAlternateKey
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DayNameOfWeek
+		dataType: string
+		summarizeBy: none
+		sourceColumn: DayNameOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayNumberOfYear
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: DayNumberOfYear
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: MonthNumberOfYear
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumberOfYear
+		dataType: int64
+		isHidden
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: MonthNumberOfYear
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarQuarter
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: CalendarQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarYear
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(".\SQL2022", "AdventureWorksDW2022", [Query="SELECT#(lf)#(tab)[DateKey],#(lf)    [FullDateAlternateKey],#(lf)    [EnglishDayNameOfWeek],#(lf)    [DayNumberOfYear],#(lf)    [EnglishMonthName],#(lf)    [MonthNumberOfYear],#(lf)    [CalendarQuarter],#(lf)    [CalendarYear]#(lf)FROM [dbo].[DimDate]#(lf)WHERE DateKey >= 20101229 AND DateKey < 20140101;"]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"FullDateAlternateKey", type date}, {"DayNumberOfYear", Int64.Type}, {"MonthNumberOfYear", Int64.Type}, {"CalendarQuarter", Int64.Type}, {"CalendarYear", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"EnglishDayNameOfWeek", "DayNameOfWeek"}, {"EnglishMonthName", "MonthName"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

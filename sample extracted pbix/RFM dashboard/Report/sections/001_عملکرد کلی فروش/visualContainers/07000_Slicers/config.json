@@ -1,0 +1,20 @@
+{
+  "name": "7c1e98688b608d5d8a75",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 128.75,
+        "y": 6.25,
+        "z": 2250,
+        "width": 611.25,
+        "height": 50,
+        "tabOrder": 7000
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "Slicers",
+    "groupMode": 0
+  }
+}

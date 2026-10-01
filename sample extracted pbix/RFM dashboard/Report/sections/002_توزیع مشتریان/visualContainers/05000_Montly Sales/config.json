@@ -1,0 +1,20 @@
+{
+  "name": "5fac1fb240a759b885d1",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 48.125,
+        "y": 392.5,
+        "z": 4000,
+        "width": 756.25,
+        "height": 296.875,
+        "tabOrder": 5000
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "Montly Sales",
+    "groupMode": 0
+  }
+}

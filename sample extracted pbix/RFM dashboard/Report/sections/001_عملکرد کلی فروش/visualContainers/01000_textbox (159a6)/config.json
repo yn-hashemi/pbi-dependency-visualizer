@@ -1,0 +1,57 @@
+{
+  "name": "159a6272418b5b4231a6",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 223.125,
+        "y": 6.5625,
+        "z": 1000,
+        "width": 98.75,
+        "height": 43.75,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": ":محصول",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#ffffff"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "07a60f35b24cb14c8829"
+}

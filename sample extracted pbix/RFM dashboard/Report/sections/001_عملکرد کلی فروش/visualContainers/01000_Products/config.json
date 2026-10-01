@@ -1,0 +1,21 @@
+{
+  "name": "07a60f35b24cb14c8829",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 288.75,
+        "y": 0,
+        "z": 8000,
+        "width": 321.875,
+        "height": 50.3125,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "Products",
+    "groupMode": 0
+  },
+  "parentGroupName": "7c1e98688b608d5d8a75"
+}

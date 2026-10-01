@@ -1,0 +1,20 @@
+{
+  "name": "ae051829ac628a6a02e2",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "height": 64,
+        "width": 1280,
+        "x": 0,
+        "y": 0,
+        "z": 1000,
+        "tabOrder": 6000
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "Top Nav Panel",
+    "groupMode": 0
+  }
+}

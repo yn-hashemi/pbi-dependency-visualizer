@@ -1,0 +1,20 @@
+{
+  "name": "37e359d089a320a7a398",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 416,
+        "y": 96,
+        "z": 6000,
+        "width": 400,
+        "height": 272,
+        "tabOrder": 5000
+      }
+    }
+  ],
+  "singleVisualGroup": {
+    "displayName": "% Product Category",
+    "groupMode": 0
+  }
+}

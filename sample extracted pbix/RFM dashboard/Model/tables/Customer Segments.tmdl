@@ -1,0 +1,53 @@
+﻿table 'Customer Segments'
+
+	column SegmentKey
+		isHidden
+		formatString: 0
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: [SegmentKey]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentEnglishName
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SegmentEnglishName]
+		sortByColumn: SegmentKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentPersianName
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SegmentPersianName]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Segments' = calculated
+		mode: import
+		source = ```
+				
+				    DATATABLE(
+				        "SegmentKey", INTEGER,
+				        "SegmentEnglishName", STRING,
+				        "SegmentPersianName", STRING,
+				        {
+				            {1, "Champions", "قهرمانان"},
+				            {2, "Loyal", "مشتریان وفادار"},
+				            {3, "Potential Loyalist", "با پتانسیل وفاداری"},
+				            {4, "New Customers", "مشتریان جدید"},
+				            {5, "Promissing", "امیدوار کننده"},
+				            {6, "Need Attention", "نیازمند توجه"},
+				            {7, "About to Sleep", "در آستانه خواب"},
+				            {8, "Cannot Lose Them but Losing", "نمی توانیم از دستشان بدهیم"},
+				            {9, "At Risk", "در خطر"},
+				            {10, "Hibernating Customers", "به خواب رفته"},
+				            {11, "Lost Customers", "از دست رفته"},
+				            {12, "Other", "سایر"}
+				        }
+				    )
+				```
+
+	annotation PBI_Id = a49f0999478340229bae58cbc226c336
+

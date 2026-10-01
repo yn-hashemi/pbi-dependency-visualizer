@@ -1,0 +1,57 @@
+{
+  "name": "ff052fe83c19d8e3d6ed",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 16,
+        "y": 0,
+        "z": 0,
+        "width": 320,
+        "height": 32,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "پرفروش ترین محصولات کدام است؟",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "right"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "2afe54e63d45da9486a6"
+}

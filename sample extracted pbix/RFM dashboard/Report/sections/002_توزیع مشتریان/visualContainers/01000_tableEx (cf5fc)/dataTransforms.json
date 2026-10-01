@@ -1,0 +1,348 @@
+{
+  "objects": {
+    "columnFormatting": [
+      {
+        "properties": {
+          "alignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Left'"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "DimCustomer.CustomerName"
+        }
+      },
+      {
+        "properties": {
+          "styleHeader": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          },
+          "alignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Left'"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Measure Table.Customer Last Order Date"
+        }
+      },
+      {
+        "properties": {
+          "alignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Center'"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Measure Table.Customer Frequency (Order Count)"
+        }
+      },
+      {
+        "properties": {
+          "alignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Center'"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Measure Table.RFM Score"
+        }
+      }
+    ],
+    "columnWidth": [
+      {
+        "properties": {},
+        "selector": {
+          "metadata": "Measure Table.Customer Last Order Date"
+        }
+      },
+      {
+        "properties": {},
+        "selector": {
+          "metadata": "Measure Table.Customer Frequency (Order Count)"
+        }
+      },
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "103.75D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Customer Segments.SegmentEnglishName"
+        }
+      },
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "185D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "DimCustomer.CustomerName"
+        }
+      },
+      {
+        "properties": {},
+        "selector": {
+          "metadata": "Measure Table.Total Sales Amount"
+        }
+      }
+    ]
+  },
+  "projectionOrdering": {
+    "Values": [
+      0,
+      2,
+      4,
+      1,
+      3,
+      5
+    ]
+  },
+  "queryMetadata": {
+    "Select": [
+      {
+        "Restatement": "نام مشتری",
+        "Name": "DimCustomer.CustomerName",
+        "Type": 2048
+      },
+      {
+        "Restatement": "مجموع خرید (M)",
+        "Name": "Measure Table.Total Sales Amount",
+        "Type": 1,
+        "Format": "\\$#,0.0;(\\$#,0.0);\\$#,0.0"
+      },
+      {
+        "Restatement": "آخرین خرید (R)",
+        "Name": "Measure Table.Customer Last Order Date",
+        "Type": 4,
+        "Format": "yyyy\\-MM\\-dd"
+      },
+      {
+        "Restatement": "RFM امتیاز",
+        "Name": "Measure Table.RFM Score",
+        "Type": 2048
+      },
+      {
+        "Restatement": "تعداد سفارش (F)",
+        "Name": "Measure Table.Customer Frequency (Order Count)",
+        "Type": 3,
+        "Format": "#,0"
+      },
+      {
+        "Restatement": "دسته مشتری",
+        "Name": "Customer Segments.SegmentEnglishName",
+        "Type": 2048
+      }
+    ],
+    "Filters": [
+      {
+        "type": 2,
+        "expression": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure Table"
+              }
+            },
+            "Property": "FILTER_Customer Segment in Visual Interaction"
+          }
+        }
+      }
+    ]
+  },
+  "visualElements": [
+    {
+      "DataRoles": [
+        {
+          "Name": "Values",
+          "Projection": 0,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 2,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 4,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 1,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 3,
+          "isActive": false
+        },
+        {
+          "Name": "Values",
+          "Projection": 5,
+          "isActive": false
+        }
+      ]
+    }
+  ],
+  "selects": [
+    {
+      "displayName": "نام مشتری",
+      "queryName": "DimCustomer.CustomerName",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "DimCustomer"
+            }
+          },
+          "Property": "CustomerName"
+        }
+      }
+    },
+    {
+      "displayName": "مجموع خرید (M)",
+      "format": "\\$#,0.0;(\\$#,0.0);\\$#,0.0",
+      "queryName": "Measure Table.Total Sales Amount",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 258
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure Table"
+            }
+          },
+          "Property": "Customer Monetory (Total Sales Amount)"
+        }
+      }
+    },
+    {
+      "displayName": "آخرین خرید (R)",
+      "format": "yyyy\\-MM\\-dd",
+      "queryName": "Measure Table.Customer Last Order Date",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 519
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure Table"
+            }
+          },
+          "Property": "Customer Last Order Date"
+        }
+      }
+    },
+    {
+      "displayName": "RFM امتیاز",
+      "queryName": "Measure Table.RFM Score",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure Table"
+            }
+          },
+          "Property": "RFM Score"
+        }
+      }
+    },
+    {
+      "displayName": "تعداد سفارش (F)",
+      "format": "#,0",
+      "queryName": "Measure Table.Customer Frequency (Order Count)",
+      "roles": {
+        "Values": true
+      },
+      "type": {
+        "category": null,
+        "underlyingType": 260
+      },
+      "expr": {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Measure Table"
+            }
+          },
+          "Property": "Customer Frequency (Order Count)"
+        }
+      }
+    },
+    {
+      "displayName": "دسته مشتری",
+      "queryName": "Customer Segments.SegmentEnglishName",
+      "roles": {
+        "Values": true
+      },
+      "sort": 1,
+      "sortOrder": 0,
+      "type": {
+        "category": null,
+        "underlyingType": 1
+      },
+      "expr": {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "Customer Segments"
+            }
+          },
+          "Property": "SegmentEnglishName"
+        }
+      }
+    }
+  ]
+}

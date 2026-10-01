@@ -1,0 +1,57 @@
+{
+  "name": "92fc2f2a376c0004ee02",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 68.251953125,
+        "y": 0,
+        "z": 1000,
+        "width": 320,
+        "height": 32.5,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "درآمد هر دسته از مشتریان",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "right"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "94406fc39144bd10a65d"
+}
